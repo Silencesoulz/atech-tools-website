@@ -1,245 +1,192 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Award } from 'lucide-react';
-import { productCategories, industries } from '../data/products';
+import {
+  ArrowRight,
+  BadgeCheck,
+  CarFront,
+  Check,
+  ChevronRight,
+  Cpu,
+  Factory,
+  Gauge,
+  HeartPulse,
+  Headphones,
+  PackageCheck,
+  Plane,
+  Zap,
+} from 'lucide-react';
+import CategoryIcon from '../components/CategoryIcon';
+import SectionHeading from '../components/SectionHeading';
+import { industries, productCategories } from '../data/products';
 
-const stats = [
-  { value: '500+', label: 'ลูกค้าที่ไว้วางใจ' },
-  { value: '5,000+', label: 'รายการสินค้า' },
-  { value: '🚚', label: 'จัดส่งทั่วประเทศไทย' },
-  { value: '24/7', label: 'บริการให้คำปรึกษา' },
+const assurances = [
+  { icon: BadgeCheck, title: 'สินค้า GESAC ของแท้', text: 'จากผู้จำหน่ายอย่างเป็นทางการ' },
+  { icon: PackageCheck, title: 'จัดหาเป็นระบบ', text: 'ตรวจสอบรุ่นและสเปกก่อนเสนอราคา' },
+  { icon: Headphones, title: 'Application Support', text: 'ช่วยเลือกเครื่องมือให้เหมาะกับงาน' },
 ];
 
+const industryIcons = [CarFront, Plane, Factory, Cpu, HeartPulse, Zap];
 
 export default function HomePage() {
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#0a1628] via-[#0d2045] to-[#1a3a6e] min-h-[85vh] flex items-center overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, white 1px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }} />
-        </div>
-        {/* Decorative circle */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/20 rounded-full -mr-48 blur-3xl" />
-        <div className="absolute left-1/4 bottom-0 w-64 h-64 bg-blue-400/10 rounded-full -mb-32 blur-2xl" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div className="overflow-hidden">
+      <section className="page-hero relative min-h-[620px] overflow-hidden sm:min-h-[650px]">
+        <div className="absolute inset-0 technical-grid opacity-35" />
+        <div className="absolute -right-32 top-8 h-[34rem] w-[34rem] rounded-full bg-blue-500/15 blur-3xl" />
+        <div className="site-container relative grid min-h-[620px] items-center gap-14 py-16 sm:min-h-[650px] sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-blue-600/30 border border-blue-500/40 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-              <span className="text-blue-200 text-sm font-medium">เครื่องมือตัดคุณภาพสูง • พร้อมส่ง</span>
+            <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/10 px-3 py-2 text-[0.62rem] font-bold tracking-wide text-blue-200 sm:px-3.5 sm:text-xs">
+              <span className="h-2 w-2 rounded-full bg-amber-400" />
+              AUTHORIZED GESAC DISTRIBUTOR · THAILAND
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              โซลูชันเครื่องมือตัด<br />
-              <span className="text-blue-300">ครบวงจร</span>
+            <h1 className="mt-7 text-[2.15rem] font-extrabold leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-[3.65rem]">
+              เลือกเครื่องมือตัดจาก
+              <span className="block text-blue-300">การใช้งานจริง</span>
             </h1>
-            <p className="text-blue-100 text-lg sm:text-xl leading-relaxed mb-8">
-              เอ-เทค ทูลส์ ผู้จำหน่ายเครื่องมือตัดคุณภาพสูง ครอบคลุมทุกประเภทงานตัดเฉือน
-              พร้อมทีมวิศวกรผู้เชี่ยวชาญให้คำปรึกษา
+            <p className="mt-6 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
+              เครื่องมือกัด กลึง เจาะ และทำเกลียวสำหรับงานตัดเฉือน พร้อมทีมงานช่วยตรวจสอบสเปกให้ตรงกับวัสดุ เครื่องจักร และเป้าหมายการผลิต
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to="/products"
-                className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-              >
-                ดูสินค้าทั้งหมด <ArrowRight className="w-5 h-5" />
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link to="/products" className="btn-primary">
+                เลือกตามประเภทงาน <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-3 rounded-lg font-semibold transition-colors"
-              >
-                ขอใบเสนอราคา
+              <Link to="/contact" className="btn-secondary border-white/20 bg-white/5 text-white hover:border-white/30 hover:bg-white/10">
+                ปรึกษาทีมงาน
               </Link>
+            </div>
+            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-300">
+              {['สินค้า GESAC ของแท้', 'คำแนะนำด้านเทคนิค', 'บริการหลังการขาย'].map((item) => (
+                <span key={item} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-blue-400" /> {item}
+                </span>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* About Snippet */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-3">เกี่ยวกับเรา</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#0d2045] leading-tight mb-6">
-                ผู้จำหน่ายอย่างเป็นทางการ<br />ของ GESAC Tools ในไทย
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                A-Tech Tools คือ Authorized Distributor ของ GESAC Tools — แบรนด์เครื่องมือตัดคาร์ไบด์ชั้นนำระดับโลก
-                จาก Xiamen Tungsten Co., Ltd. (XTC) ประเทศจีน
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-6">
-                ด้วยทีมวิศวกรผู้เชี่ยวชาญและสินค้า GESAC ของแท้ครบครันกว่า 5,000 รายการ
-                เราพร้อมให้คำปรึกษาและนำเสนอโซลูชันที่ตรงกับความต้องการของลูกค้าแต่ละราย
-              </p>
-              <ul className="space-y-2 mb-8">
-                {['ผู้จำหน่าย GESAC Tools อย่างเป็นทางการในไทย', 'สินค้า GESAC ของแท้ พร้อมส่งจากสต็อก', 'วิศวกรให้คำปรึกษาฟรี', 'บริการหลังการขายครบครัน'].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-gray-700">
-                    <CheckCircle className="w-5 h-5 text-blue-600 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 bg-[#0d2045] hover:bg-[#1a3a6e] text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-              >
-                รู้จักเราเพิ่มเติม <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-            <div className="relative">
+          <div className="relative hidden lg:block">
+            <div className="absolute -inset-5 rounded-[2rem] border border-white/10" />
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-white/15 bg-white/5 p-3 shadow-2xl shadow-black/30 backdrop-blur">
               <img
-                src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&q=80"
-                alt="CNC Machining"
-                className="rounded-2xl shadow-xl w-full object-cover h-80 md:h-96"
+                src="/milling-tools.png"
+                alt="เครื่องมือตัดและหัวกัดคาร์ไบด์"
+                className="h-[430px] w-full rounded-[1rem] object-cover"
               />
-              <div className="absolute -bottom-4 -left-4 bg-white border border-gray-100 shadow-xl p-4 rounded-xl flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#0d2045] rounded-lg flex items-center justify-center shrink-0">
-                  <Award className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-[#0d2045] font-bold text-sm leading-tight">Authorized Distributor</div>
-                  <div className="text-gray-400 text-xs">GESAC Tools — Thailand</div>
+              <div className="absolute inset-x-7 bottom-7 rounded-xl border border-white/15 bg-[#08152a]/90 p-5 backdrop-blur-md">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-300">Tooling portfolio</p>
+                    <p className="mt-1 font-bold text-white">Milling · Turning · Drilling</p>
+                  </div>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-600 text-white">
+                    <Gauge className="h-5 w-5" />
+                  </span>
                 </div>
               </div>
+            </div>
+            <div className="absolute -right-6 -top-7 rounded-xl border border-blue-300/20 bg-blue-600 px-4 py-3 text-white shadow-xl">
+              <p className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-blue-100">Partner brand</p>
+              <p className="mt-0.5 text-xl font-extrabold tracking-[0.12em]">GESAC</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Products */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-3">สินค้าของเรา</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0d2045]">หมวดหมู่เครื่องมือตัด</h2>
-            <p className="text-gray-500 mt-3 max-w-xl mx-auto">เครื่องมือตัดคาร์ไบด์ครบวงจร สำหรับงานตัดเฉือนทุกประเภท</p>
+      <section className="border-b border-slate-200 bg-white">
+        <div className="site-container grid divide-y divide-slate-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          {assurances.map((assurance) => {
+            const AssuranceIcon = assurance.icon;
+            return (
+            <div key={assurance.title} className="flex items-center gap-4 py-6 sm:px-6 first:pl-0 last:pr-0">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
+                <AssuranceIcon className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="text-sm font-bold text-slate-900">{assurance.title}</p>
+                <p className="mt-0.5 text-xs text-slate-500">{assurance.text}</p>
+              </div>
+            </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="section-pad bg-[#f7f9fc]">
+        <div className="site-container">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Browse by operation"
+              title="เริ่มจากประเภทงานตัดเฉือน"
+              description="จัดหมวดตามกระบวนการผลิต เพื่อให้ค้นหาเครื่องมือได้เร็วและเทียบซีรีส์ในกลุ่มเดียวกันได้ง่ายขึ้น"
+            />
+            <Link to="/products" className="hidden items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900 sm:flex">
+              ดูทุกหมวดสินค้า <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {productCategories.map((cat) => (
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {productCategories.map((category, index) => (
               <Link
-                key={cat.id}
-                to="/products"
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                key={category.id}
+                to={`/products?category=${category.id}`}
+                className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-xl hover:shadow-slate-200/60 sm:p-6"
               >
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                <div className="flex items-start justify-between">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-700 transition-colors group-hover:bg-blue-600 group-hover:text-white">
+                    <CategoryIcon category={category} className="h-6 w-6" />
+                  </span>
+                  <span className="text-xs font-bold tracking-[0.14em] text-slate-300">0{index + 1}</span>
                 </div>
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-2xl">{cat.icon}</span>
-                    <h3 className="font-bold text-[#0d2045] text-lg">{cat.name}</h3>
-                  </div>
-                  <p className="text-sm text-gray-500 line-clamp-2">{cat.nameEn}</p>
-                  <div className="mt-4 flex items-center gap-1 text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
-                    ดูรายละเอียด <ArrowRight className="w-4 h-4" />
-                  </div>
+                <h3 className="mt-6 text-xl font-extrabold text-slate-950">{category.name}</h3>
+                <p className="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-blue-600">{category.nameEn}</p>
+                <p className="mt-4 line-clamp-2 text-sm leading-6 text-slate-500">{category.description}</p>
+                <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
+                  <span className="text-xs font-semibold text-slate-500">{category.products.length} กลุ่มผลิตภัณฑ์</span>
+                  <ChevronRight className="h-4 w-4 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-blue-600" />
                 </div>
               </Link>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <Link
-              to="/products"
-              className="inline-flex items-center gap-2 bg-[#0d2045] hover:bg-[#1a3a6e] text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-            >
-              ดูสินค้าทั้งหมด <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+          <Link to="/products" className="btn-secondary mt-6 w-full sm:hidden">
+            ดูทุกหมวดสินค้า <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
-      {/* Industries */}
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-3">อุตสาหกรรมที่เราให้บริการ</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0d2045]">โซลูชันสำหรับทุกอุตสาหกรรม</h2>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {industries.map((ind) => (
-              <div key={ind.name} className="text-center p-4 rounded-xl bg-gray-50 hover:bg-blue-50 hover:shadow-sm transition-all">
-                <div className="text-4xl mb-2">{ind.icon}</div>
-                <h3 className="font-semibold text-[#0d2045] text-sm mb-1">{ind.name}</h3>
-                <p className="text-gray-500 text-xs">{ind.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* News */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-3">ข่าวสารล่าสุด</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0d2045]">ข่าวสารและบทความ</h2>
-            <p className="text-gray-500 mt-3 max-w-xl mx-auto">ติดตามข่าวสาร อัปเดตสินค้าใหม่ และเทคโนโลยีเครื่องมือตัดล่าสุดจาก GESAC</p>
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-0">
-              {/* Left: Facebook CTA */}
-              <div className="bg-[#0d2045] p-10 flex flex-col justify-center">
-                <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-5">
-                  <svg className="w-8 h-8 text-white fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      <section className="section-pad relative overflow-hidden bg-[#0b1b34]">
+        <div className="absolute inset-0 technical-grid opacity-20" />
+        <div className="site-container relative">
+          <SectionHeading
+            eyebrow="Industry coverage"
+            title="รองรับงานผลิตหลายอุตสาหกรรม"
+            description="ตั้งแต่งานผลิตจำนวนมาก ไปจนถึงชิ้นส่วนที่ต้องควบคุมความแม่นยำและวัสดุตัดเฉือนยาก"
+            align="center"
+            inverse
+          />
+          <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 md:grid-cols-3 lg:grid-cols-6">
+            {industries.map((industry, index) => {
+              const Icon = industryIcons[index];
+              return (
+                <div key={industry.name} className="bg-[#0b1b34] p-4 text-center transition-colors hover:bg-white/5 sm:p-5">
+                  <Icon className="mx-auto h-6 w-6 text-blue-400" />
+                  <h3 className="mt-4 text-sm font-bold text-white">{industry.name}</h3>
+                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-400">{industry.description}</p>
                 </div>
-                <h3 className="text-white text-2xl font-bold mb-3">ติดตามเราบน Facebook</h3>
-                <p className="text-blue-200 text-sm leading-relaxed mb-6">
-                  รับข่าวสาร โปรโมชั่น และอัปเดตสินค้าใหม่ล่าสุดจาก GESAC ได้ก่อนใครผ่าน Facebook Page
-                </p>
-                <Link
-                  to="/news"
-                  className="inline-flex items-center gap-2 bg-white text-[#0d2045] font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors self-start"
-                >
-                  ดูข่าวสารทั้งหมด <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-              {/* Right: Highlights */}
-              <div className="p-8 flex flex-col gap-5 justify-center">
-                {[
-                  { tag: 'สินค้าใหม่', title: 'GESAC BuzzEdge — End Mill สำหรับงานอลูมิเนียมประสิทธิภาพสูง', desc: 'ออกแบบมาเพื่อการตัดเฉือนอลูมิเนียมโดยเฉพาะ ลดการสะสมของเนื้องาน (BUE) และผิวงานเรียบในการตัดครั้งเดียว' },
-                  { tag: 'เทคโนโลยี', title: 'AH Series Angle Head — ขยายขีดความสามารถเครื่อง CNC ของคุณ', desc: 'แก้ปัญหางานที่เครื่องมาตรฐานทำไม่ได้ ด้วย Angle Head ที่ปรับมุมได้หลากหลาย' },
-                  { tag: 'อัปเดต', title: 'GESAC เข้าร่วมงานแสดงสินค้า TIMTOS 2025 ที่ไทเปประเทศไต้หวัน', desc: 'นำเสนอนวัตกรรมเครื่องมือตัดคาร์ไบด์รุ่นใหม่ล่าสุด พร้อมโซลูชั่นสำหรับอุตสาหกรรมยานยนต์และการบิน' },
-                ].map((item) => (
-                  <div key={item.title} className="flex gap-4 items-start">
-                    <span className="shrink-0 mt-0.5 bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">{item.tag}</span>
-                    <div>
-                      <p className="font-semibold text-[#0d2045] text-sm leading-snug mb-1">{item.title}</p>
-                      <p className="text-gray-400 text-xs leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-gradient-to-r from-blue-700 to-[#0d2045] py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">ต้องการคำปรึกษาด้านเครื่องมือตัด?</h2>
-          <p className="text-blue-100 text-lg mb-8">ทีมวิศวกรของเราพร้อมช่วยคุณเลือกเครื่องมือที่เหมาะสมที่สุด</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white text-[#0d2045] hover:bg-blue-50 px-8 py-3 rounded-lg font-bold transition-colors"
-            >
-              ติดต่อเราเลย <ArrowRight className="w-5 h-5" />
+      <section className="bg-blue-600 py-14">
+        <div className="site-container flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-blue-100">Need a recommendation?</p>
+            <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">ให้ทีมงานช่วยคัดเครื่องมือที่เหมาะกับงานของคุณ</h2>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link to="/contact" className="btn-light">
+              ขอคำแนะนำ <ArrowRight className="h-4 w-4" />
             </Link>
-            <a
-              href="tel:+6621234567"
-              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white/10 px-8 py-3 rounded-lg font-bold transition-colors"
-            >
+            <a href="tel:+66824282653" className="btn-secondary border-white/25 bg-transparent text-white hover:bg-white/10">
               โทร 082-428-2653
             </a>
           </div>

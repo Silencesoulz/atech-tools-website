@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, ClipboardList } from 'lucide-react';
 import ProductQuiz from '../components/ProductQuiz';
+import PageHero from '../components/PageHero';
 
 const FORMSPREE_URL = 'https://formspree.io/f/xnjoqkld';
 const RATE_LIMIT_KEY = 'atech_last_submit';
@@ -16,11 +17,13 @@ const contactInfo = [
     icon: <Phone className="w-6 h-6 text-blue-400" />,
     title: 'โทรศัพท์',
     lines: ['082-428-2653'],
+    href: 'tel:+66824282653',
   },
   {
     icon: <Mail className="w-6 h-6 text-blue-400" />,
     title: 'อีเมล',
     lines: ['atechtools.sales@gmail.com'],
+    href: 'mailto:atechtools.sales@gmail.com',
   },
   {
     icon: <Clock className="w-6 h-6 text-blue-400" />,
@@ -115,34 +118,36 @@ export default function ContactPage() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0a1628] via-[#0d2045] to-[#1a3a6e] py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-blue-300 font-semibold text-sm uppercase tracking-widest mb-3">ติดต่อเรา</p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">พร้อมช่วยเหลือคุณ</h1>
-          <p className="text-blue-100 text-xl max-w-xl mx-auto">
-            ติดต่อทีมงานเราเพื่อรับคำปรึกษาด้านเครื่องมือตัดและขอใบเสนอราคาฟรี
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Talk to our team"
+        title="ส่งรายละเอียดงานให้เราช่วยตรวจสอบ"
+        description="ระบุประเภทงาน วัสดุ เครื่องจักร หรือรหัสสินค้าที่สนใจ ทีมงานจะติดต่อกลับเพื่อช่วยแนะนำและจัดทำใบเสนอราคา"
+      />
 
       {/* Contact Content */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-10">
+      <section className="bg-[#f7f9fc] section-pad">
+        <div className="site-container">
+          <div className="grid gap-6 lg:grid-cols-3 lg:gap-10">
             {/* Contact Info */}
             <div className="lg:col-span-1 space-y-6">
-              <div className="bg-[#0d2045] rounded-2xl p-8 text-white">
-                <h2 className="text-xl font-bold mb-6">ข้อมูลติดต่อ</h2>
-                <div className="space-y-6">
+              <div className="relative overflow-hidden rounded-xl bg-[#0d2045] p-6 text-white sm:p-8">
+                <div className="absolute inset-0 technical-grid opacity-15" />
+                <h2 className="relative text-xl font-bold mb-6">ข้อมูลติดต่อ</h2>
+                <div className="relative space-y-6">
                   {contactInfo.map((info) => (
                     <div key={info.title} className="flex gap-4">
                       <div className="shrink-0">{info.icon}</div>
                       <div>
                         <div className="text-blue-300 text-sm font-medium mb-1">{info.title}</div>
-                        {info.lines.map((line) => (
-                          <div key={line} className="text-white text-sm">{line}</div>
-                        ))}
+                        {info.href ? (
+                          <a href={info.href} className="break-all text-sm text-white underline-offset-4 hover:underline">
+                            {info.lines[0]}
+                          </a>
+                        ) : (
+                          info.lines.map((line) => (
+                            <div key={line} className="text-sm text-white">{line}</div>
+                          ))
+                        )}
                       </div>
                     </div>
                   ))}
@@ -150,7 +155,7 @@ export default function ContactPage() {
               </div>
 
               {/* Map */}
-              <div className="bg-white rounded-2xl overflow-hidden shadow-sm h-56">
+              <div className="h-56 overflow-hidden rounded-xl border border-slate-200 bg-white">
                 <iframe
                   title="แผนที่ A-Tech Tools"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.844477299085!2d100.6904625!3d13.727864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d619bc551cda9%3A0x321b236f85ead273!2sA%20Tech%20Tools!5e0!3m2!1sth!2sth!4v1711440000000!5m2!1sth!2sth"
@@ -169,7 +174,7 @@ export default function ContactPage() {
 
               {/* Quiz prompt / quiz / badge */}
               {!submitted && quizStage === 'prompt' && (
-                <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+                <div className="flex flex-col gap-4 rounded-xl border border-blue-200 bg-blue-50 p-5 sm:flex-row sm:items-center sm:p-6">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <ClipboardList className="w-5 h-5 text-blue-600" />
@@ -180,7 +185,7 @@ export default function ContactPage() {
                   <div className="flex gap-3 shrink-0">
                     <button
                       onClick={() => setQuizStage('quiz')}
-                      className="bg-[#0d2045] hover:bg-[#1a3a6e] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
+                      className="rounded-lg bg-[#0d2045] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#1a3a6e]"
                     >
                       เริ่มเลย
                     </button>
@@ -205,7 +210,7 @@ export default function ContactPage() {
                 </div>
               )}
 
-              <div className="bg-white rounded-2xl p-8 shadow-sm">
+              <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-8">
                 {submitted ? (
                   <div className="text-center py-16">
                     <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
@@ -325,7 +330,7 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={loading || !!phoneError}
-                        className="w-full flex items-center justify-center gap-2 bg-[#0d2045] hover:bg-[#1a3a6e] disabled:opacity-60 disabled:cursor-not-allowed text-white py-3 rounded-lg font-semibold transition-colors"
+                        className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         <Send className="w-4 h-4" /> {loading ? 'กำลังส่ง...' : 'ส่งข้อความ'}
                       </button>

@@ -4,8 +4,6 @@ export const productCategories = [
     name: 'เครื่องมือกัด',
     nameEn: 'Milling Tools',
     description: 'ดอกเอ็นมิลคาร์ไบด์และหัวกัดแบบ Indexable จาก GESAC ครอบคลุมงานกัดเหล็ก, สแตนเลส, อลูมิเนียม และวัสดุพิเศษ ด้วยเทคโนโลยีการเคลือบผิวขั้นสูง',
-    icon: '⚙️',
-    image: '/milling-tools.png',
     products: [
       { series: 'GM Series', desc: 'Solid Carbide End Mill สำหรับงานเหล็กกล้า, ความแม่นยำสูง' },
       { series: 'GAL Series', desc: 'Solid Carbide End Mill สำหรับอลูมิเนียมและโลหะสี' },
@@ -20,8 +18,6 @@ export const productCategories = [
     name: 'เครื่องมือกลึง',
     nameEn: 'Turning Tools',
     description: 'อินเสิร์ตกลึงและหัวกลึง GESAC คุณภาพสูง รองรับงานกลึงเหล็ก สแตนเลส เหล็กหล่อ อลูมิเนียม ไทเทเนียม และวัสดุทนความร้อนสูง',
-    icon: '🔧',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80',
     products: [
       { series: 'GNT Series', desc: 'New Generation Steel Turning Insert แก้ปัญหา chip breaking ในงานเหล็ก' },
       { series: 'GIT Series', desc: 'Stainless Steel Turning Insert เคลือบผิวพิเศษต้านการสึกหรอ' },
@@ -36,8 +32,6 @@ export const productCategories = [
     name: 'เครื่องมือเจาะ',
     nameEn: 'Drilling Tools',
     description: 'ดอกสว่านคาร์ไบด์ GESAC ประสิทธิภาพสูง ตั้งแต่งานเจาะทั่วไปจนถึงงานเจาะรูลึกพิเศษ L/D สูงถึง 40 เท่า',
-    icon: '🔩',
-    image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80',
     products: [
       { series: 'GD Series', desc: 'Solid Carbide Drill มาตรฐาน L/D 3–5x สำหรับงานทั่วไป' },
       { series: 'GDD-8D Series', desc: 'Deep Hole Drill L/D 8x สำหรับงานเจาะลึก' },
@@ -52,8 +46,6 @@ export const productCategories = [
     name: 'เครื่องมือเกลียว',
     nameEn: 'Threading Tools',
     description: 'เครื่องมือทำเกลียว GESAC ครบวงจร ทั้งแบบกลึงเกลียว, ต๊าป และหัวกัดเกลียว รองรับ Metric, Inch และเกลียวพิเศษ',
-    icon: '🔑',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',
     products: [
       { series: 'GTT Series', desc: 'Thread Turning Insert อินเสิร์ตกลึงเกลียวนอกและใน (ISO Metric, UN, NPT)' },
       { series: 'GTH Series', desc: 'Thread Turning Holder หัวกลึงเกลียวภายนอกและภายใน' },
@@ -66,8 +58,6 @@ export const productCategories = [
     name: 'เครื่องมือเซาะร่อง',
     nameEn: 'Grooving & Parting Tools',
     description: 'เครื่องมือเซาะร่องและตัดขาด GESAC ความแม่นยำสูง สำหรับงาน External Grooving, Internal Grooving, Face Grooving และ Parting',
-    icon: '✂️',
-    image: 'https://images.unsplash.com/photo-1590247813693-5541d1c609fd?w=600&q=80',
     products: [
       { series: 'GGI Series', desc: 'Grooving & Parting Insert อินเสิร์ตเซาะร่องและตัดขาด' },
       { series: 'GGE Series', desc: 'External Grooving Holder หัวเซาะร่องภายนอก' },
@@ -80,8 +70,6 @@ export const productCategories = [
     name: 'เครื่องมือพิเศษ',
     nameEn: 'Special & Indexable Tools',
     description: 'เครื่องมือพิเศษจาก GESAC สำหรับงานที่ต้องการโซลูชันเฉพาะทาง เช่น หัวมุมฉาก, เครื่องมืออัลตราโซนิก และ Indexable Insert ประเภทต่างๆ',
-    icon: '🛠️',
-    image: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=80',
     products: [
       { series: 'AH Series (Angle Head)', desc: 'หัวมุมฉากสำหรับงานที่เข้าถึงยาก ลดการ Setup ชิ้นงาน' },
       { series: 'BuzzEdge Ultrasonic Series', desc: 'เครื่องมือตัดอัลตราโซนิกสำหรับวัสดุแข็ง เซรามิก, CFRP, Sapphire' },

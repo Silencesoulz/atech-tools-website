@@ -45,7 +45,7 @@ export default function ProductQuiz({ onComplete }) {
   const progress = ((currentStep + 1) / steps.length) * 100;
 
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-sm">
+    <div className="rounded-xl border border-slate-200 bg-white p-6 sm:p-8">
       {/* Progress */}
       <div className="mb-6">
         <div className="flex justify-between text-xs text-gray-400 mb-2">
@@ -72,8 +72,8 @@ export default function ProductQuiz({ onComplete }) {
             onClick={() => toggleOption(opt.value)}
             className={`flex items-start gap-3 p-4 rounded-xl border-2 text-left transition-all ${
               isSelected(opt.value)
-                ? 'border-blue-600 bg-blue-50'
-                : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                ? 'border-blue-600 bg-blue-50 shadow-sm'
+                : 'border-slate-200 hover:border-blue-300 hover:bg-slate-50'
             }`}
           >
             <span className="text-2xl shrink-0">{opt.icon}</span>
@@ -91,11 +91,11 @@ export default function ProductQuiz({ onComplete }) {
       </div>
 
       {/* Navigation */}
-      <div className="flex gap-3">
+      <div className="flex flex-col-reverse gap-3 sm:flex-row">
         {currentStep > 0 && (
           <button
             onClick={() => setCurrentStep((s) => s - 1)}
-            className="flex items-center gap-1.5 px-5 py-3 border-2 border-gray-200 text-gray-600 rounded-lg font-medium hover:border-gray-300 transition-colors"
+            className="flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 px-5 py-3 font-medium text-slate-600 transition-colors hover:border-slate-300"
           >
             <ChevronLeft className="w-4 h-4" /> ย้อนกลับ
           </button>
@@ -103,7 +103,7 @@ export default function ProductQuiz({ onComplete }) {
         <button
           onClick={handleNext}
           disabled={!canNext}
-          className="flex-1 flex items-center justify-center gap-2 bg-[#0d2045] hover:bg-[#1a3a6e] disabled:opacity-40 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+          className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {currentStep < steps.length - 1 ? (
             <>ถัดไป <ChevronRight className="w-4 h-4" /></>
